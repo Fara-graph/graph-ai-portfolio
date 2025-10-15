@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor Meza | Generative AI Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e5e7eb;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #818cf8, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        
+        .card-bg {
+            background-color: rgba(23, 23, 23, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glow-effect {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, rgba(139, 92, 246, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            animation: pulse 8s infinite ease-in-out;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(0.8); opacity: 0.5; }
+        }
+
+        .submission-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .submission-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(168, 85, 247, 0.1), 0 10px 10px -5px rgba(168, 85, 247, 0.1);
+        }
+
+        nav a {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #a855f7;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #d8b4fe;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- Canvas for background animation -->
+    <canvas id="background-canvas" class="fixed top-0 left-0 w-full h-full z-[-2]"></canvas>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-md">
+        <div class="container mx-auto px-6 py-4">
+            <nav class="flex justify-between items-center">
+                <a href="#" class="text-xl font-bold text-white">VM</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about-me" class="text-gray-300">About Me</a>
+                    <a href="#about-course" class="text-gray-300">The Course</a>
+                    <a href="#submissions" class="text-gray-300">My Submissions</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center justify-center text-center overflow-hidden">
+            <div class="glow-effect top-1/4 left-1/4"></div>
+            <div class="glow-effect bottom-1/4 right-1/4 hidden md:block" style="animation-delay: -4s;"></div>
+            
+            <div class="container mx-auto px-6 relative">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4">
+                    Victor Meza's Portfolio
+                </h1>
+                <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold gradient-text">
+                    Generative AI for Work & Research
+                </h2>
+                <p class="mt-6 text-lg text-gray-400 max-w-2xl mx-auto">
+                    Exploring the frontiers of AI-powered productivity and innovation. This is my journey through an 8-week intensive course.
+                </p>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about-me" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">About Me</h2>
+                    <div class="w-20 h-1 bg-purple-500 mx-auto mt-4 rounded"></div>
+                </div>
+                <div class="max-w-4xl mx-auto card-bg rounded-2xl shadow-2xl p-8 md:p-12 text-center">
+                    <img src="https://placehold.co/128x128/171717/d8b4fe?text=VM" alt="Victor Meza" class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-purple-400">
+                    <h3 class="text-2xl font-bold text-white mb-2">Victor Meza</h3>
+                    <p class="text-purple-300 mb-4">Undergraduate Student, UC Davis</p>
+                    <p class="text-gray-300 leading-relaxed">
+                        I am a first-year undergraduate student in International Agriculture Development at the University of California, Davis. With a passion for leveraging technology to solve real-world problems, I am currently expanding my skills in artificial intelligence. This portfolio documents my projects and learnings from the "Generative AI for Work & Research" course, showcasing my ability to apply no-code AI tools for task automation and research productivity.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About the Course Section -->
+        <section id="about-course" class="py-20 md:py-32 bg-black/20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">About the Course</h2>
+                     <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto">An 8-week deep dive into using no-code AI tools for task automation and enhanced productivity in work and research.</p>
+                    <div class="w-20 h-1 bg-purple-500 mx-auto mt-4 rounded"></div>
+                </div>
+
+                <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+                    <!-- This will list the modules of the course -->
+                    <div class="card-bg p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-purple-300 mb-2">Module 1: Websites, Documents & Presentations</h3>
+                        <p class="text-gray-400">Understanding LLMs to generate text, create no-code websites, and design presentations.</p>
+                    </div>
+                    <div class="card-bg p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-purple-300 mb-2">Module 2: AI-Automated Data Analysis</h3>
+                        <p class="text-gray-400">Using AI tools to analyze data, manipulate files, and create automated reports and dashboards.</p>
+                    </div>
+                    <div class="card-bg p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-purple-300 mb-2">Module 3: GenAI for Research & Text Analysis</h3>
+                        <p class="text-gray-400">Applying AI for literature searches, text analysis, and knowledge synthesis from large document collections.</p>
+                    </div>
+                    <div class="card-bg p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-purple-300 mb-2">Module 4: Custom GPTs and Chatbots</h3>
+                        <p class="text-gray-400">Building custom chatbots and research assistants using advanced LLM architectures.</p>
+                    </div>
+                    <div class="card-bg p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-purple-300 mb-2">Module 5: AI for Task Automation</h3>
+                        <p class="text-gray-400">Automating repetitive tasks through AI-driven flows and agent-based systems.</p>
+                    </div>
+                    <div class="card-bg p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-purple-300 mb-2">Module 6: GenAI for Communication and Outreach</h3>
+                        <p class="text-gray-400">Using AI to create research summaries, scientific figures, and video abstracts for dissemination.</p>
+                    </div>
+                     <div class="md:col-span-2 card-bg p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-purple-300 mb-2">Module 7: Capstone Project & Showcase</h3>
+                        <p class="text-gray-400">Developing and presenting a final AI solution or tool, integrating all learned concepts in a comprehensive project.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Weekly Submissions Section -->
+        <section id="submissions" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">My Weekly Submissions</h2>
+                    <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto">A collection of my projects and assignments from each module of the course.</p>
+                    <div class="w-20 h-1 bg-purple-500 mx-auto mt-4 rounded"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Placeholder cards for submissions -->
+                    <div class="submission-card card-bg rounded-lg p-6">
+                        <h3 class="text-xl font-semibold text-white mb-3">Module 1 Submission</h3>
+                        <p class="text-gray-400 mb-4">Website & Document Generation</p>
+                        <a href="#" class="font-medium text-purple-400 hover:text-purple-300">View Project &rarr;</a>
+                    </div>
+                    <div class="submission-card card-bg rounded-lg p-6">
+                        <h3 class="text-xl font-semibold text-white mb-3">Module 2 Submission</h3>
+                        <p class="text-gray-400 mb-4">Automated Data Report</p>
+                        <a href="#" class="font-medium text-purple-400 hover:text-purple-300">View Project &rarr;</a>
+                    </div>
+                    <div class="submission-card card-bg rounded-lg p-6">
+                        <h3 class="text-xl font-semibold text-white mb-3">Module 3 Submission</h3>
+                        <p class="text-gray-400 mb-4">Literature Review Analysis</p>
+                        <a href="#" class="font-medium text-purple-400 hover:text-purple-300">View Project &rarr;</a>
+                    </div>
+                    <div class="submission-card card-bg rounded-lg p-6">
+                        <h3 class="text-xl font-semibold text-white mb-3">Module 4 Submission</h3>
+                        <p class="text-gray-400 mb-4">Custom Research Chatbot</p>
+                        <a href="#" class="font-medium text-purple-400 hover:text-purple-300">View Project &rarr;</a>
+                    </div>
+                    <div class="submission-card card-bg rounded-lg p-6">
+                        <h3 class="text-xl font-semibold text-white mb-3">Module 5 Submission</h3>
+                        <p class="text-gray-400 mb-4">Task Automation Workflow</p>
+                        <a href="#" class="font-medium text-purple-400 hover:text-purple-300">View Project &rarr;</a>
+                    </div>
+                    <div class="submission-card card-bg rounded-lg p-6">
+                        <h3 class="text-xl font-semibold text-white mb-3">Module 6 Submission</h3>
+                        <p class="text-gray-400 mb-4">AI-Generated Video Abstract</p>
+                        <a href="#" class="font-medium text-purple-400 hover:text-purple-300">View Project &rarr;</a>
+                    </div>
+                     <div class="submission-card card-bg rounded-lg p-6 md:col-start-2 lg:col-start-auto">
+                        <h3 class="text-xl font-semibold text-white mb-3">Module 7 Capstone</h3>
+                        <p class="text-gray-400 mb-4">Final AI Productivity Tool</p>
+                        <a href="#" class="font-medium text-purple-400 hover:text-purple-300">View Project &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-black/20 py-8">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p>&copy; <span id="year"></span> Victor Meza. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Canvas background animation
+        const canvas = document.getElementById('background-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor(x, y, directionX, directionY, size, color) {
+                this.x = x;
+                this.y = y;
+                this.directionX = directionX;
+                this.directionY = directionY;
+                this.size = size;
+                this.color = color;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+
+            update() {
+                if (this.x > canvas.width || this.x < 0) {
+                    this.directionX = -this.directionX;
+                }
+                if (this.y > canvas.height || this.y < 0) {
+                    this.directionY = -this.directionY;
+                }
+                this.x += this.directionX;
+                this.y += this.directionY;
+                this.draw();
+            }
+        }
+
+        function init() {
+            particles = [];
+            let numberOfParticles = (canvas.height * canvas.width) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 2) + 1;
+                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                let directionX = (Math.random() * .4) - .2;
+                let directionY = (Math.random() * .4) - .2;
+                let color = 'rgba(168, 85, 247, 0.6)';
+                particles.push(new Particle(x, y, directionX, directionY, size, color));
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+            }
+        }
+        
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            init();
+        });
+
+        // Initialize and run animation
+        resizeCanvas();
+        init();
+        animate();
+
+    </script>
+</body>
+
+</html>
